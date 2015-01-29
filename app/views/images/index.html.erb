@@ -1,0 +1,23 @@
+<%= form_for @image do |f| %>
+  <%= f.text_field :url, placeholder:"Image Url http://..." %>
+  <%= f.text_field :title, placeholder:"Title" %>
+  <%= f.text_field :username, placeholder:"username?" %>
+  <%= f.submit %>
+<% end %>
+
+<div id="flash-message">
+  
+</div>
+
+<div id="image-region">
+  <% @images.each do |image| %>
+    <div class="image-holder">
+      <img class="thumbnail" src=<%= image.url %> alt=<%= image.title %> />
+      <div class="plaque">
+
+        <h3><%= image.title %></h3>
+        <p>Posted by: <%= image.username %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
