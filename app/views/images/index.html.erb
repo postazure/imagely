@@ -1,13 +1,21 @@
-<%= form_for @image do |f| %>
-  <%= f.text_field :url, placeholder:"Image Url http://..." %>
-  <%= f.text_field :title, placeholder:"Title" %>
-  <%= f.text_field :username, placeholder:"username?" %>
-  <%= f.submit "Post Image", id:"image_submit" %>
-<div id="flash-message">
-<% end %>
-
-
+<div class="ui fluid form segment">
+  <div class="three fields">
+    <%= form_for @image do |f| %>
+      <div class="field">
+        <%= f.text_field :url, placeholder:"Image Url http://..." %>
+      </div>
+      <div class="field">
+        <%= f.text_field :title, placeholder:"Title" %>
+      </div>
+      <div class="field">
+        <%= f.text_field :username, placeholder:"username?" %>
+      </div>
+      <%= f.submit "Post Image", id:"image_submit", class:"ui submit button" %>
+    <% end %>
+  </div>
 </div>
+
+<div id="flash-message"></div>
 
 <div id="image-region">
   <% @images.each do |image| %>
@@ -15,7 +23,6 @@
       <%= image_tag "delete-icon-md.png", class:"delete-image" %>
       <img class="thumbnail" src=<%= image.url %> alt=<%= image.title %> />
       <div class="plaque">
-
         <h3><%= image.title %></h3>
         <p><%= image.username %></p>
       </div>
