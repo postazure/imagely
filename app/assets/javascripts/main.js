@@ -19,7 +19,8 @@ function createImage(paramsHash) {
     clearImageFields();
 
     $("#image-region").append(
-      "<div class='image-holder'>"+
+      "<div class='image-holder' data-id="+image.id+">"+
+        "<span class='delete-image'>|X|</span>"+
         "<img class='thumbnail' src="+ image.url +" alt="+ image.title +"/>"+
         "<div class='plaque'>"+
           "<h3>\""+ image.title +"\"</h3>"+
@@ -32,13 +33,16 @@ function createImage(paramsHash) {
   });
 }
 
-function deleteImage() {
-  // Need to get id info
-  $.ajax("/images", {type: "delete"})
+function deleteImage(currentSpan) {
+  var id = currentSpan.parent().data("id");
+  $.ajax("/images/"+id, {type: "delete"})
   .done(function (data) {
-
+    var imageHolder = $('.image-holder[data-id="'+data.id+'"]');
+    imageHolder.fadeOut('fast',function () {
+        this.remove();
+      });
   }).fail(function (data) {
-    // body...
+    console.log("failed to delete");
   });
 }
 

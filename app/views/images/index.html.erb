@@ -6,12 +6,13 @@
 <% end %>
 
 <div id="flash-message">
-  
+
 </div>
 
 <div id="image-region">
   <% @images.each do |image| %>
-    <div class="image-holder">
+    <div class="image-holder" data-id=<%= image.id %>>
+      <span class="delete-image">|X|</span>
       <img class="thumbnail" src=<%= image.url %> alt=<%= image.title %> />
       <div class="plaque">
 
