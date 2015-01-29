@@ -9,7 +9,6 @@ $(document).ready(function () {
   });
 
   $('#image-region').on('click', '.delete-image', function () {
-    console.log(this)
     deleteImage($(this));
   });
 });
@@ -36,7 +35,6 @@ function createImage(paramsHash) {
 
 function deleteImage(currentSpan) {
   var id = currentSpan.parent().data("id");
-  console.log(id)
   $.ajax("/images/"+id, {type: "delete"})
   .done(function (data) {
     var imageHolder = $('.image-holder[data-id="'+data.id+'"]');
