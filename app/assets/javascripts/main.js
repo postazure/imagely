@@ -8,7 +8,8 @@ $(document).ready(function () {
     });
   });
 
-  $('.delete-image').on('click', function () {
+  $('#image-region').on('click', '.delete-image', function () {
+    console.log(this)
     deleteImage($(this));
   });
 });
@@ -20,10 +21,10 @@ function createImage(paramsHash) {
 
     $("#image-region").append(
       "<div class='image-holder' data-id="+image.id+">"+
-        "<span class='delete-image'>|X|</span>"+
+        "<img alt='Delete icon md' class='delete-image' src='/assets/delete-icon-md.png'>"+
         "<img class='thumbnail' src="+ image.url +" alt="+ image.title +"/>"+
         "<div class='plaque'>"+
-          "<h3>\""+ image.title +"\"</h3>"+
+          "<h3>"+ image.title +"</h3>"+
           "<p>Posted by:"+ image.username +"</p>"+
         "</div>"+
       "</div>"
@@ -35,6 +36,7 @@ function createImage(paramsHash) {
 
 function deleteImage(currentSpan) {
   var id = currentSpan.parent().data("id");
+  console.log(id)
   $.ajax("/images/"+id, {type: "delete"})
   .done(function (data) {
     var imageHolder = $('.image-holder[data-id="'+data.id+'"]');

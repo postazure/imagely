@@ -2,22 +2,22 @@
   <%= f.text_field :url, placeholder:"Image Url http://..." %>
   <%= f.text_field :title, placeholder:"Title" %>
   <%= f.text_field :username, placeholder:"username?" %>
-  <%= f.submit %>
+  <%= f.submit "Post Image", id:"image_submit" %>
+<div id="flash-message">
 <% end %>
 
-<div id="flash-message">
 
 </div>
 
 <div id="image-region">
   <% @images.each do |image| %>
     <div class="image-holder" data-id=<%= image.id %>>
-      <span class="delete-image">|X|</span>
+      <%= image_tag "delete-icon-md.png", class:"delete-image" %>
       <img class="thumbnail" src=<%= image.url %> alt=<%= image.title %> />
       <div class="plaque">
 
         <h3><%= image.title %></h3>
-        <p>Posted by: <%= image.username %></p>
+        <p><%= image.username %></p>
       </div>
     </div>
   <% end %>
