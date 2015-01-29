@@ -1,0 +1,81 @@
+body {
+  background-color:  #6c4603;
+}
+
+#container {
+  width: 70%;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+#image-region {}
+
+.thumbnail {
+  width: 100%;
+  height: 250px;
+}
+
+form {
+  padding: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 54%;
+}
+
+
+input {
+  padding: 5px;
+  margin: 5px 1px 3px 0px;
+  border-width: 5px;
+  border-radius: 25px
+}
+
+#image_submit{
+  background-color: rgb(188, 70, 12);
+  border-color: rgb(168, 82, 40);
+  color: white;
+  cursor: pointer;
+}
+
+.error-field {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 1);
+  border: 1px solid rgba(255, 0, 0, 1);
+}
+
+.image-holder {
+  display:inline-block;
+  width: 24%;
+  overflow: hidden;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #bc460c;
+  box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.image-holder .plaque {
+  border-top: 3px solid black;
+  margin-top: -4px;
+}
+.image-holder .plaque h3{
+  text-align: center;
+}
+.image-holder .plaque p{
+  text-align: center;
+}
+
+.image-holder:hover .delete-image {
+  opacity: 1;
+  transition: opacity 0.5s swing;
+  transition-delay: 1.0s;
+  pointer-events: auto;
+}
+
+.delete-image {
+  width: 20px;
+  opacity: 0;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  pointer-events: none;
+}
