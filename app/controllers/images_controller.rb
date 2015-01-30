@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     update_hash = {}
 
-    if params[:update_command] == "likes"
+    if params[:update_command].include?("likes")
       update_hash[:likes] = @image.likes + 1
     end
 
