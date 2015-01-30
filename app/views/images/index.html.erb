@@ -24,7 +24,8 @@
       <img class="thumbnail" src=<%= image.url %> alt=<%= image.title %> />
       <div class="plaque">
         <h3><%= image.title %></h3>
-        <p><%= image.username %></p>
+
+        <p><%= image.username %> | <i class="heart icon"><%= image.likes %></i></p>
       </div>
     </div>
   <% end %>

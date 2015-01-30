@@ -11,6 +11,10 @@ $(document).ready(function () {
   $('#image-region').on('click', '.delete-image', function () {
     deleteImage($(this));
   });
+
+  $('#image-region').on('click', '.heart', function () {
+    likeImage($(this));
+  });
 });
 
 function createImage(paramsHash) {
@@ -24,7 +28,7 @@ function createImage(paramsHash) {
         "<img class='thumbnail' src="+ image.url +" alt="+ image.title +"/>"+
         "<div class='plaque'>"+
           "<h3>"+ image.title +"</h3>"+
-          "<p>Posted by:"+ image.username +"</p>"+
+          "<p>"+ image.username +" | <i class='heart icon'>"+ image.likes +"</i></p>"+
         "</div>"+
       "</div>"
     );
@@ -43,6 +47,19 @@ function deleteImage(currentSpan) {
       });
   }).fail(function (data) {
     console.log("failed to delete");
+  });
+}
+
+function likeImage(currentIcon) {
+  var id = currentIcon.closest(".image-holder").data("id");
+  var likes = parseInt(currentIcon.text());
+  $.ajax("/images/"+id, {type: 'patch',
+    data:{update_command:"likes"}
+  })
+  .done(function (data) {
+    currentIcon.text(data.likes);
+  }).fail(function (data) {
+    console.log("failed to like");
   });
 }
 
